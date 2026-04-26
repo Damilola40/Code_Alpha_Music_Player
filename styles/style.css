@@ -2,7 +2,7 @@
     --bg-gradient: linear-gradient(135deg, #b2d2ff, #d2e6ff, #89afd8);
     --player-bg: rgba(255, 255, 255, 0.1);
     --border-color: rgba(255, 255, 255, 0.5);
-    --box-shadow: rgba(49, 49, 92, 0.2);
+    --box-shadow: rgba(0, 0, 0, 0.6);
     --text-primary: #1a3a5c;
     --text-secondary: #4a7ab5;
     --icon-color: #1a3a5c;
@@ -11,7 +11,7 @@
 body.dark-mode {
     --bg-gradient: linear-gradient(135deg, #1a1a2e, #172e6b, #132d4d);
     --player-bg: rgba(255, 255, 255, 0.1);
-    --box-shadow: rgba(255, 255, 255, 0.8);
+    --box-shadow: rgb(255, 255, 255);
     --text-primary: #e8f4ff;
     --text-secondary: #a8c8f8;
     --icon-color: #e8f4ff;
@@ -52,7 +52,7 @@ body {
     height: 100vh;
     color: var(--text-primary);
     background: var(--player-bg);
-    backdrop-filter: blur(10px);
+    border-right: 3px solid var(--border-color);
     padding: 20px;
 }
 .list.active {
@@ -117,6 +117,7 @@ nav {
     width: 200px;
     height: 200px;
     margin: 20px 0;
+    padding: 5px;
 }
 #song-title {
     font-size: 1.5rem;
@@ -176,6 +177,10 @@ nav {
 .forward:hover, .backward:hover {
     box-shadow: 0 0 20px var(--box-shadow)
 }
+.repeat.active,
+.shuffle.active {
+    box-shadow: 0 0 20px var(--box-shadow);
+}
 .play-pause-btns {
     width: 50px;
     height: 50px;
@@ -197,7 +202,7 @@ nav {
     justify-content: space-evenly;
     margin: 40px 0 20px 0;
 }
-#volume-icon {
+#volume {
     width: 40px;
     height: 40px;
     line-height: 33px;
@@ -206,9 +211,10 @@ nav {
     border: 3px solid var(--border-color);
     border-radius: 50%;
     cursor: pointer;
-    transition: box-shadow 0.3s ease;
+    transition: box-shadow 0.3s ease,
+                display 0.3s;
 }
-#volume-icon:hover {
+#volume:hover {
     box-shadow: 0 0 20px var(--box-shadow)
 }
 .volume-bar {
@@ -225,7 +231,7 @@ nav {
     height: 20px;
     width: 20px;
     background: var(--icon-color);
-    border: 5px solid var(--border-color);
+    border: 5px solid var(--text-secondary);
     border-radius: 50%;
 }
 
