@@ -74,26 +74,26 @@ const loadSong = (index) => {
 loadSong(currentSongIndex);
 
 // Update the Playlist
-const musicList = document.getElementById("playlist-songs")
+const musicList = document.getElementById("playlist-songs")  
+const updatePlaylist = () => {
+    document.querySelectorAll(".list-song").forEach((item, i) => {
+        item.classList.remove("bold"); // remove from all
+        if (i === currentSongIndex) {
+            item.classList.add("bold"); // add only to current
+        }
+    });
+}
+
 songs.forEach((song, index) => {
     const list = document.createElement('li');
-    list.className = "list-song"
+    list.className = "list-song";
     list.textContent = song.title + " - " + song.artist;
-    musicList.appendChild(list)
+    musicList.appendChild(list);
 
     list.addEventListener("click", () => {
+        currentSongIndex = index;
         loadSong(index);
-        audio.play()
-        const updatePlaylist = () => {
-            document.querySelectorAll(".list-song").forEach((item, i)=> {
-                item.classList.remove("bold");
-                if (index === currentSongIndex) {
-                    item.classList.add("bold");
-                }
-            });
-            list.classList.add("bold");
-        }  
-        
+        audio.play()    
         playBtnIcon.classList.remove("fa-play");
         playBtnIcon.classList.add("fa-pause");
         updatePlaylist();
