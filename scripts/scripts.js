@@ -73,6 +73,25 @@ const loadSong = (index) => {
 }
 loadSong(currentSongIndex);
 
+// Update the Playlist
+const musicList = document.getElementById("playlist-songs")
+songs.forEach((song, index) => {
+    const list = document.createElement('li');
+    list.className = "list-song"
+    list.textContent = song.title + " - " + song.artist;
+    musicList.appendChild(list)
+
+    list.addEventListener("click", () => {
+        loadSong(index);
+        audio.play()
+        document.querySelectorAll(".list-song").forEach(item=> {
+            item.classList.remove("bold");
+        });
+            
+        list.classList.add("bold");
+    })
+})
+
 
 // Progress Bar
 const progressBar = document.getElementById("progress");
@@ -173,10 +192,12 @@ repeatBtn.addEventListener("click", () => {
 
 
 audio.addEventListener("ended", () => {
+
     progressBar.value = 0;
     current_time.innerText = "0:00"; // set timer to default
     playBtnIcon.classList.remove("fa-pause");
     playBtnIcon.classList.add("fa-play"); 
+
     if (isShuffle) {
         console.log("shuffle activated");
         currentSongIndex = Math.floor(Math.random() * songs.length);
@@ -185,6 +206,7 @@ audio.addEventListener("ended", () => {
         playBtnIcon.classList.remove("fa-play");
         playBtnIcon.classList.add("fa-pause");
     } // shuffle playlist
+
     if (isRepeat) {
         console.log("repeat activated");
         audio.currentTime = 0;

@@ -111,6 +111,23 @@ nav {
 .playlist:hover, .theme-toggle:hover {
     box-shadow: 0 0 20px var(--box-shadow)
 }
+#playlist-songs {
+    padding: 30px 0;
+    list-style: none;
+    text-align: left;
+}
+.list-song {
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    padding: 5px 0;
+    cursor: pointer;
+}
+.list-song.bold {
+    font-weight: bold;
+}
+.list-song:hover {
+    font-weight: bold;
+}
 .cover-photo {
     border: 2px solid var(--border-color);
     border-radius: 50%;
