@@ -84,11 +84,19 @@ songs.forEach((song, index) => {
     list.addEventListener("click", () => {
         loadSong(index);
         audio.play()
-        document.querySelectorAll(".list-song").forEach(item=> {
-            item.classList.remove("bold");
-        });
-            
-        list.classList.add("bold");
+        const updatePlaylist = () => {
+            document.querySelectorAll(".list-song").forEach((item, i)=> {
+                item.classList.remove("bold");
+                if (index === currentSongIndex) {
+                    item.classList.add("bold");
+                }
+            });
+            list.classList.add("bold");
+        }  
+        
+        playBtnIcon.classList.remove("fa-play");
+        playBtnIcon.classList.add("fa-pause");
+        updatePlaylist();
     })
 })
 
@@ -102,9 +110,9 @@ audio.onloadedmetadata = function() {
     progressBar.value = 0;
 }
 audio.ontimeupdate = function() {
-    progressBar.value = song.currentTime; 
-    current_time.innerText = formatTime(song.currentTime);
-    songDuration.innerText = formatTime(song.duration);
+    progressBar.value = audio.currentTime; 
+    current_time.innerText = formatTime(audio.currentTime);
+    songDuration.innerText = formatTime(audio.duration);
 }
 const formatTime = (seconds) => {
     const mins = Math.floor(seconds / 60); // how many full minutes
@@ -156,6 +164,7 @@ function forwardBtn () {
     if (isPlaying) {
         audio.play();
     }
+    updatePlaylist();
 }
 forward.addEventListener("click", forwardBtn)
 
@@ -169,6 +178,7 @@ const backwardBtn = () => {
     if (isPlaying) {
         audio.play()
     }
+    updatePlaylist();
 }
 backward.addEventListener("click", backwardBtn)
 
