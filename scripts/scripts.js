@@ -138,6 +138,7 @@ const togglePlay = () => {
         console.log("playing successfully"); // does this show?
         playBtnIcon.classList.remove("fa-play");
         playBtnIcon.classList.add("fa-pause");
+        updatePlaylist();
         // Seeking
         progressBar.addEventListener("input", () => {
             audio.play();
