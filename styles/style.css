@@ -116,17 +116,17 @@ nav {
     list-style: none;
     text-align: left;
 }
-.list-song {
+.listItem-song {
     color: var(--text-primary);
     font-size: 1.1rem;
     padding: 5px 0;
     cursor: pointer;
 }
-.list-song.bold {
+.listItem-song.bold {
     font-weight: bold;
 }
-.list-song:hover {
-    font-weight: bold;
+.listItem-song:hover {
+    color: var(--text-primary);
 }
 .cover-photo {
     border: 2px solid var(--border-color);

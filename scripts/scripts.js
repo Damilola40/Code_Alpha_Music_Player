@@ -85,12 +85,12 @@ const updatePlaylist = () => {
 }
 
 songs.forEach((song, index) => {
-    const list = document.createElement('li');
-    list.className = "list-song";
-    list.textContent = song.title + " - " + song.artist;
-    musicList.appendChild(list);
+    const listItem = document.createElement('li');
+    listItem.className = "listItem-song";
+    listItem.textContent = song.title + " - " + song.artist;
+    musicList.appendChild(listItem);
 
-    list.addEventListener("click", () => {
+    listItem.addEventListener("click", () => {
         currentSongIndex = index;
         loadSong(index);
         audio.play()    
