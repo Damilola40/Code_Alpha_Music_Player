@@ -1,3 +1,4 @@
+/*- Color Variables -*/
 :root {
     --bg-gradient: linear-gradient(135deg, #b2d2ff, #d2e6ff, #89afd8);
     --player-bg: rgba(255, 255, 255, 0.1);
@@ -17,17 +18,20 @@ body.dark-mode {
     --icon-color: #e8f4ff;
 }
 
+/*- CSS Reset — removes default styles -*/
 *, *::after, *::before {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
+/*- Body Styling -*/
 body {
     background: var(--bg-gradient);
     height: 100vh;
 }
 
+/*- Container Styling -*/
 .container {
     width: 100%;
     height: 100vh;
@@ -44,6 +48,29 @@ body {
     padding: 30px;
     width: 380px;
 }
+
+/*- Head/Nav Styling -*/
+nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.playlist, .theme-toggle {
+    width: 40px;
+    height: 40px;
+    line-height: 33px;
+    color: var(--text-primary);
+    background-color: var(--player-bg);
+    border: 3px solid var(--border-color);
+    border-radius: 50%;
+    cursor: pointer;
+    transition: box-shadow 0.3s ease;
+}
+.playlist:hover, .theme-toggle:hover {
+    box-shadow: 0 0 20px var(--box-shadow)
+}
+
+/*- Playlist Styling -*/
 .list {
     position: fixed;
     top: 0;
@@ -92,25 +119,7 @@ body {
     to { transform: translateX(-300px); }
 }
 
-nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-}
-.playlist, .theme-toggle {
-    width: 40px;
-    height: 40px;
-    line-height: 33px;
-    color: var(--text-primary);
-    background-color: var(--player-bg);
-    border: 3px solid var(--border-color);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: box-shadow 0.3s ease;
-}
-.playlist:hover, .theme-toggle:hover {
-    box-shadow: 0 0 20px var(--box-shadow)
-}
+/* Playlist Items */
 #playlist-songs {
     padding: 30px 0;
     list-style: none;
@@ -126,8 +135,10 @@ nav {
     font-weight: bold;
 }
 .listItem-song:hover {
-    color: var(--text-primary);
+    font-weight: bold;
 }
+
+/*- Song Image/Title/Artist Styling -*/
 .cover-photo {
     border: 2px solid var(--border-color);
     border-radius: 50%;
@@ -145,6 +156,8 @@ nav {
     font-size: 1rem;
     color: var(--text-secondary);
 }
+
+/*- Song Timeline (current time, progress bar and duration ) Styling -*/
 .timeline {
     display: flex;
     flex-direction: row;
@@ -171,6 +184,8 @@ nav {
     border: 5px solid var(--text-secondary);
     border-radius: 50%;
 }
+
+/*- Control Buttons Styling -*/
 .controls {
     display: flex;
     flex-direction: row;
@@ -212,6 +227,8 @@ nav {
 .play-pause-btns:hover {
     box-shadow: 0 0 20px var(--box-shadow)
 }
+
+/*- Volume Button Styling -*/
 .controls-2 {
     display: flex;
     flex-direction: row;

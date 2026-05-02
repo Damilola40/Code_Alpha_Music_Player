@@ -76,7 +76,7 @@ loadSong(currentSongIndex);
 // Update the Playlist
 const musicList = document.getElementById("playlist-songs")  
 const updatePlaylist = () => {
-    document.querySelectorAll(".list-song").forEach((item, i) => {
+    document.querySelectorAll(".listItem-song").forEach((item, i) => {
         item.classList.remove("bold"); // remove from all
         if (i === currentSongIndex) {
             item.classList.add("bold"); // add only to current
