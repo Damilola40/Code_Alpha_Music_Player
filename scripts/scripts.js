@@ -209,9 +209,6 @@ audio.addEventListener("ended", () => {
     playBtnIcon.classList.remove("fa-pause");
     playBtnIcon.classList.add("fa-play"); 
 
-    
-
-
     if (isShuffle) {
         console.log("shuffle activated");
         currentSongIndex = Math.floor(Math.random() * songs.length);
