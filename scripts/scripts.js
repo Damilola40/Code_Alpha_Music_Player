@@ -209,6 +209,9 @@ audio.addEventListener("ended", () => {
     playBtnIcon.classList.remove("fa-pause");
     playBtnIcon.classList.add("fa-play"); 
 
+    
+
+
     if (isShuffle) {
         console.log("shuffle activated");
         currentSongIndex = Math.floor(Math.random() * songs.length);
@@ -218,15 +221,20 @@ audio.addEventListener("ended", () => {
         playBtnIcon.classList.add("fa-pause");
     } // shuffle playlist
 
-    if (isRepeat) {
+    if (isRepeat) { // repeat song
         console.log("repeat activated");
         audio.currentTime = 0;
         audio.play();
         playBtnIcon.classList.remove("fa-play");
         playBtnIcon.classList.add("fa-pause");
-    } else {
-        forwardBtn
-    } // repeat song
+    } else if (!isRepeat && !isShuffle) { // move to next song
+        currentSongIndex += 1; 
+        loadSong(currentSongIndex);
+        audio.play(); 
+        playBtnIcon.classList.remove("fa-play");
+        playBtnIcon.classList.add("fa-pause");
+        updatePlaylist();
+    } 
 })
 
 // Volume Button
