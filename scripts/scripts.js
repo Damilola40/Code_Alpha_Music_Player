@@ -139,16 +139,20 @@ const togglePlay = () => {
         playBtnIcon.classList.remove("fa-play");
         playBtnIcon.classList.add("fa-pause");
         updatePlaylist();
-        // Seeking
-        progressBar.addEventListener("input", () => {
-            audio.play();
-            audio.currentTime = progressBar.value;
-            playBtnIcon.classList.remove("fa-play");
-            playBtnIcon.classList.add("fa-pause");
-        })
     }
 }
 playBtn.addEventListener("click", togglePlay);
+
+// Seeking through the song
+progressBar.addEventListener("input", () => {
+    audio.currentTime = progressBar.value;
+    if (!isPlaying) {
+        isPlaying = true;
+        audio.play();
+        playBtnIcon.classList.remove("fa-play");
+        playBtnIcon.classList.add("fa-pause");
+    }
+})
     
 
 // Next and Previous Buttons
@@ -164,6 +168,10 @@ function forwardBtn () {
     loadSong(currentSongIndex);
     if (isPlaying) {
         audio.play();
+    } else {
+        audio.play();
+        playBtnIcon.classList.remove("fa-play");
+        playBtnIcon.classList.add("fa-pause");
     }
     updatePlaylist();
 }
@@ -177,7 +185,11 @@ const backwardBtn = () => {
     }
     loadSong(currentSongIndex);
     if (isPlaying) {
-        audio.play()
+        audio.play();
+    } else {
+        audio.play();
+        playBtnIcon.classList.remove("fa-play");
+        playBtnIcon.classList.add("fa-pause");
     }
     updatePlaylist();
 }
